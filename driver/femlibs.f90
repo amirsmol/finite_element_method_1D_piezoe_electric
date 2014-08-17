@@ -426,6 +426,7 @@ subroutine result_printer_1D(iter,glu)
 !     ================================================================
       integer::i,j,pdf,k;
       integer::curved_node;
+      integer,parameter::gnuplot=5
       integer,save::counter
       character(len=5)::str,x1
       character(len=20) :: fmt,filename ! format descriptor
@@ -442,6 +443,7 @@ subroutine result_printer_1D(iter,glu)
       filename='1d_afc'//trim(x1)//'.csv'
 !
       open (out,file='out_1d_data_outpu.txt')
+      open (gnuplot,file='gnu_out_put.gnu')
 !
       write(out,910);write(out,*)'time',time
       write(out,910);write(out,910);write(out,670);write(out,910)
@@ -455,6 +457,7 @@ subroutine result_printer_1D(iter,glu)
       endif
       pdf=(curved_node-1)*ndf
       write(csv,951)iter,time(2),glu(pdf+1)
+      write(gnuplot,*)glu(pdf+2),time(2),glu(pdf+1)
 
 !     ===============================================================
 !                              formats

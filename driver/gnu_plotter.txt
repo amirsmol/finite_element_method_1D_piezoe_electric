@@ -1,0 +1,9 @@
+ set terminal postscript eps enhanced 
+ set output "fem_1d_plot_time_deflection.eps"
+ set title "Time - Strain " font ",20"
+ set xlabel "time (s)"
+ set ylabel "strain {/Symbol e}"
+ set style data lines
+ set key left box 
+ 
+ plot "gnu_out_put.gnu" using 2:3 title "strain vs time"

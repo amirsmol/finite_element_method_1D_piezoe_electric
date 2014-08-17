@@ -16,6 +16,7 @@ driver_file = driver/driver_fem_1d_fortran_eclipse.f90
 compiled_module_files=fem_geometry.mod fem_libs.mod linearsolvers.mod material_behavior.mod
 output_files=*.mod *.exe *.csv *.out *.txt fort.*
 library_files=c:\lapack\liblapack.a c:\lapack\librefblas.a c:\lapack\libtmglib.a 
+gnu_plot_command_file=driver/gnu_plotter.txt
 
 
 all: 
@@ -35,3 +36,4 @@ run:
 	$(exec_file) \
 	$(module_files) $(driver_file) $(library_files)
 	$(exec_file)
+	gnuplot $(gnu_plot_command_file) 
